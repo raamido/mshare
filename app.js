@@ -71,5 +71,5 @@ copyButton.addEventListener('mouseleave', (event) => {
 link.addEventListener('click', (event) => {
     event.stopPropagation()
 
-    location.href = location.origin
+    location.href = location.pathname
 })
