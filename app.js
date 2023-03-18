@@ -1,6 +1,7 @@
 const form = document.querySelector('form')
 const messageBox = document.querySelector('textarea')
 const messageContainer = document.querySelector('.message')
+const copyButton = document.querySelector('.floating-button')
 
 window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(location.search)
@@ -38,4 +39,14 @@ window.addEventListener('popstate', (event) => {
         form.hidden = false
         messageContainer.hidden = true
     }
+})
+
+copyButton.addEventListener('click', (event) => {
+    navigator.clipboard.writeText(location.href.toString()).then(() => {
+        event.target.setAttribute("data-tooltip", "Copied")
+    })
+})
+
+copyButton.addEventListener('mouseleave', (event) => {
+    event.target.setAttribute("data-tooltip", "Copy Link")
 })

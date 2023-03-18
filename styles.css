@@ -61,5 +61,45 @@ button:focus {
 }
 
 [hidden] {
-  display: none;
+  display: none !important;
+}
+
+.floating-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: white;
+  bottom: 5%;
+  right: 5%;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.floating-button img {
+  pointer-events: none;
+}
+
+.floating-button:hover {
+  filter: brightness(0.95);
+}
+
+.floating-button:hover::before {
+  visibility: visible;
+}
+
+.floating-button::before {
+  visibility: hidden;
+  position: absolute;
+  top: -50%;
+  content: attr(data-tooltip);
+  font-size: 12px;
+  padding: 4px;
+  font-family: "Open sans", sans-serif;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.856);
 }
