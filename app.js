@@ -24,19 +24,21 @@ window.addEventListener('DOMContentLoaded', () => {
 form.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    const SECRET_MESSAGE = btoa(messageBox.value)
-    const params = new URLSearchParams(location.search)
-    params.set("message", SECRET_MESSAGE)
-    messageURL = location.href + '?' + params.toString();
+    if (messageBox.value.trim().length > 0) {
+        const SECRET_MESSAGE = btoa(messageBox.value)
+        const params = new URLSearchParams(location.search)
+        params.set("message", SECRET_MESSAGE)
+        messageURL = location.href + '?' + params.toString();
 
-    history.pushState(null, '', messageURL)
-    event.target.reset()
-    form.hidden = true
-    messageContainer.hidden = false
-    copyButton.hidden = false
+        history.pushState(null, '', messageURL)
+        event.target.reset()
+        form.hidden = true
+        messageContainer.hidden = false
+        copyButton.hidden = false
 
 
-    messageContainer.querySelector('p').textContent = atob(SECRET_MESSAGE)
+        messageContainer.querySelector('p').textContent = atob(SECRET_MESSAGE)
+    }
 })
 
 window.addEventListener('popstate', (event) => {
