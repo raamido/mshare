@@ -103,3 +103,14 @@ button:focus {
   color: white;
   background: rgba(0, 0, 0, 0.856);
 }
+
+footer {
+  font-family: "Open sans", sans-serif;
+  text-align: center;
+}
+
+.link {
+  color: #3a86ff;
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -2,6 +2,8 @@ const form = document.querySelector('form')
 const messageBox = document.querySelector('textarea')
 const messageContainer = document.querySelector('.message')
 const copyButton = document.querySelector('.floating-button')
+const footer = document.querySelector('footer')
+const link = document.querySelector('.link')
 
 window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(location.search)
@@ -11,12 +13,14 @@ window.addEventListener('DOMContentLoaded', () => {
         form.hidden = true
         messageContainer.hidden = false
         copyButton.hidden = false
+        footer.hidden = false
 
         messageContainer.querySelector('p').textContent = atob(message)
     } else {
         form.hidden = false
         messageContainer.hidden = true
         copyButton.hidden = true
+        footer.hidden = true
 
     }
 })
@@ -35,6 +39,7 @@ form.addEventListener('submit', (event) => {
         form.hidden = true
         messageContainer.hidden = false
         copyButton.hidden = false
+        footer.hidden = false
 
 
         messageContainer.querySelector('p').textContent = atob(SECRET_MESSAGE)
@@ -48,6 +53,7 @@ window.addEventListener('popstate', (event) => {
         copyButton.hidden = true
     } else {
         copyButton.hidden = false
+        footer.hidden = false
 
     }
 })
@@ -60,4 +66,10 @@ copyButton.addEventListener('click', (event) => {
 
 copyButton.addEventListener('mouseleave', (event) => {
     event.target.setAttribute("data-tooltip", "Copy Link")
+})
+
+link.addEventListener('click', (event) => {
+    event.stopPropagation()
+
+    location.href = location.origin
 })
