@@ -10,11 +10,14 @@ window.addEventListener('DOMContentLoaded', () => {
     if (message) {
         form.hidden = true
         messageContainer.hidden = false
+        copyButton.hidden = false
 
         messageContainer.querySelector('p').textContent = atob(message)
     } else {
         form.hidden = false
         messageContainer.hidden = true
+        copyButton.hidden = true
+
     }
 })
 
@@ -30,6 +33,8 @@ form.addEventListener('submit', (event) => {
     event.target.reset()
     form.hidden = true
     messageContainer.hidden = false
+    copyButton.hidden = false
+
 
     messageContainer.querySelector('p').textContent = atob(SECRET_MESSAGE)
 })
@@ -38,6 +43,10 @@ window.addEventListener('popstate', (event) => {
     if (!event.state) {
         form.hidden = false
         messageContainer.hidden = true
+        copyButton.hidden = true
+    } else {
+        copyButton.hidden = false
+
     }
 })
 
